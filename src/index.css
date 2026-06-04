@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Serif+Display:ital@0;1&display=swap");
+@import "tailwindcss";
+
+
+@theme {
+  /* 60% — Harmattan Cream (dominant / backgrounds) */
+  --color-cream: #FAF7F2;
+  --color-cream-dark: #EDE5D8;
+
+  /* 30% — Adire Burgundy (structure / UI) */
+  --color-burgundy: #6B0F0F;
+  --color-burgundy-light: #962020;
+
+  /* 10% — Aso-oke Gold (accent / CTAs) */
+  --color-gold: #D4961A;
+  --color-gold-light: #F9CB4A;
+
+  /* Neutrals */
+  --color-dark: #2E2018;
+  --color-mid: #8A7360;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* Custom Fonts */
+  --font-heading: "DM Serif Display", serif;
+  --font-body: "DM Sans", sans-serif;
+}
