@@ -2,9 +2,11 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import { HiMenu, HiX } from "react-icons/hi"
 import Button from "./Button"
+import QuoteModal from "./QuoteModal" // 1. Import your newly created TypeScript QuoteModal
 
 const Navbar = () => {
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false); // 2. Add state to toggle the modal canvas
 
     return (
         <nav className="bg-cream border-b border-cream-dark font-body sticky top-0 z-50 transition-colors duration-300">
@@ -21,15 +23,17 @@ const Navbar = () => {
                 <div className="hidden md:flex items-center gap-8 font-medium text-dark">
                     <Link to="/" className="hover:text-burgundy transition-colors duration-200">Home</Link>
                     <Link to="/inventory" className="hover:text-burgundy transition-colors duration-200">Inventory</Link>
-                    <Link to="/about" className="hover:text-burgundy transition-colors duration-200">About</Link>
+                    <a href="#about" className="hover:text-burgundy transition-colors duration-200">About</a>
                     <Link to="/contact" className="hover:text-burgundy transition-colors duration-200">Contact</Link>
                 </div>
 
-                {/* Desktop CTA Button */}
+                {/* Desktop CTA Button Trigger */}
                 <div className="hidden md:block">
-                    <Button>
-                        Get Quote
-                    </Button>
+                    <button onClick={() => setIsModalOpen(true)} className="focus:outline-none">
+                        <Button>
+                            Get Quote
+                        </Button>
+                    </button>
                 </div>
 
                 {/* Mobile Menu Trigger Button */}
@@ -62,13 +66,13 @@ const Navbar = () => {
                     >
                         Inventory
                     </Link>
-                    <Link
-                        to="/about"
+                    <a
+                        href="#about"
                         onClick={() => setIsOpen(false)}
-                        className="hover:text-burgundy border-b border-cream/40 pb-2 transition-colors duration-200"
+                        className="hover:text-burgundy border-b border-cream/40 pb-2 transition-colors duration-200 block text-left"
                     >
                         About
-                    </Link>
+                    </a>
                     <Link
                         to="/contact"
                         onClick={() => setIsOpen(false)}
@@ -77,14 +81,26 @@ const Navbar = () => {
                         Contact
                     </Link>
 
-                    {/* Centered Mobile CTA Button */}
+                    {/* Mobile CTA Button Trigger */}
                     <div className="pt-2">
-                        <Button >
-                            Get Quote
-                        </Button>
+                        <button
+                            onClick={() => {
+                                setIsOpen(false);      // Close the mobile drawer menu
+                                setIsModalOpen(true);  // Open the interactive selection modal
+                            }}
+                            className="w-full text-left focus:outline-none"
+                        >
+                            <Button>
+                                Get Quote
+                            </Button>
+                        </button>
                     </div>
+
                 </div>
             </div>
+
+            {/* 3. Render the QuoteModal safely at the base layout node level */}
+            <QuoteModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </nav>
     )
 }
