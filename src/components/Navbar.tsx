@@ -66,13 +66,7 @@ const Navbar = () => {
                     >
                         Inventory
                     </Link>
-                    <a
-                        href="#about"
-                        onClick={() => setIsOpen(false)}
-                        className="hover:text-burgundy border-b border-cream/40 pb-2 transition-colors duration-200 block text-left"
-                    >
-                        About
-                    </a>
+                   
                     <Link
                         to="/contact"
                         onClick={() => setIsOpen(false)}
