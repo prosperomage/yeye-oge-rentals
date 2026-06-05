@@ -156,7 +156,7 @@ const ContactUs = () => {
               id="rentalItems"
               name="rentalItems"
               required
-              rows="3"
+              rows={3}
               value={formData.rentalItems}
               onChange={handleChange}
               placeholder="e.g., 200 Chiavari chairs, 20 round tables, 2 premium canopies, 1 standby generator."
@@ -172,7 +172,7 @@ const ContactUs = () => {
             <textarea
               id="message"
               name="message"
-              rows="4"
+              rows={4}
               value={formData.message}
               onChange={handleChange}
               placeholder="Share location specifics, layout preferences, or setup timeline requests..."
